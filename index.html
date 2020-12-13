@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Meme Generator</title>
+</head>
+
+<body onload="onInit()">
+    <header>
+        <section class="container flex align-center space-between">
+            <div class="logo-img">
+                <img src="ICONS/LOGO.png">
+            </div>
+            <ul class="main-menu clean-list flex ">
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li onclick="onShowGallery()">
+                    <a href="#">Gallery</a>
+                </li>
+                <li onclick="onShowGalleryMeme()">
+                    <a href="#">memes</a>
+                </li>
+
+            </ul>
+            <button class="menu-btn" onclick="onToggleMenu()">☰</button>
+        </section>
+    </header>
+    <main>
+
+        <section class=" main-continer space-between">
+            <div class="main-nav flex">
+                <div class="search ">
+                    <input list="keyWord" name="keyWord" id="searchWords" class="list-search" placeholder="Search"
+                        oninput=" onRenderSearchPic(this.value)">
+                    <datalist id="keyWord">
+                        <option value="funny">
+                        <option value="men">
+                        <option value="famous">
+                        <option value="animal">
+                        <option value="love">
+                        <option value="baby">
+                        <option value="smile">
+                    </datalist>
+
+                </div>
+
+                <div class="key-worlds flex space-between"></div>
+                <button class="more">More</button>
+
+            </div>
+            <div class="gallery-continer ">
+
+            </div>
+
+        </section>
+        <div class="meme-editor space-around  ">
+            <canvas id="my-canvas" height="500" width="500" onclick="onCanvasClicked(event)"
+                onmousedown="onHandelMouse(event)" onmouseup="onHandelMouse(event)" onmousemove="onHandelMouse(event)">
+            </canvas>
+
+            <div class="meme-change">
+
+                <input type="text" id="fname" name="txtLine" oninput=" onRenderTxt(this.value)">
+                <div class="btn-selection">
+                    <button class="fa delete" onclick="onDeleteLine()"><img src="ICONS/trash.png"></button>
+                    <button class="fa add" onclick="onAddLine()"><img src="ICONS/add.png"></button>
+                    <button class="up-down" onclick="onMoveLine()"><img
+                            src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                    <button class="up-btn" onclick="onUpLine()"><i class="fa fa-arrow-up"></i></button>
+                    <button class="down-btn" onclick="onDownLine()"><i class="fa fa-arrow-down"></i></button>
+                </div>
+                <div class="control-box">
+                    <button onclick="onChangeTextSize(1)"><img src="ICONS/increase font - icon.png"></button>
+                    <button onclick="onChangeTextSize(-1)"><img src="ICONS/decrease font - icon.png"></button>
+                    <button onclick="onSetTextDirection('end')"><img src="ICONS/align-to-left.png"></button>
+                    <button onclick="onSetTextDirection('center')"><img src="ICONS/center-text-alignment.png"></button>
+                    <button onclick="onSetTextDirection('start')"><img src="ICONS/align-to-right.png"></button>
+
+                    <button class="btn-fill-color"><input onchange="onSetFillColor()" class="colorFill" type="color"
+                            name="colorFill" /><img src="ICONS/paint-board-and-brush.png"></button>
+
+                    <button class="strokeBgc"><input onchange="onSetStokeColor()" class="colorStroke" type="color"
+                            name="colorStroke" /> <img src="ICONS/text stroke.png"></button>
+                    <button class="save-btn" onclick="onSaveMemeToStorage()">save</button>
+                    <input onchange="onChangeFontSize(this.value)" list="font" name="keyWord" class="list-font"
+                        placeholder="font family">
+                    <datalist id="font">
+                        <option value="Ariel">
+                        <option value="poppins">
+                        <option value="latobold">
+                        <option value="eurofbold">
+                    </datalist>
+
+
+
+
+                </div>
+                <div class="jif">
+                    <!-- <img  src="stickers/ears.png">
+                    <img  src="stickers/hat.png">
+                    <img  src="stickers/sunglasses.png">
+                    <img  src="stickers/wig.png"> -->
+                </div>
+                <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                    <button  type="submit" class="share-btn"> <i class="fa fa-share-alt-square"></i>
+                        Share</button>
+                    <button onclick="ondownolad(this)" class="downolad-btn"><a href="#" onclick="downloadCanvas(this)"
+                            download=""><i class="fa fa-download"></i> Downolad</a></button>
+                    <div class="share-container"></div>
+                </form>
+
+            </div>
+        </div>
+
+    </main>
+    <!-- <script src="js/util-service.js"></script> -->
+    <script src="js/storage-service.js"></script>
+    <script src="js/memeService.js"></script>
+    <script src="js/memeController.js"></script>
+</body>
+
+</html>
